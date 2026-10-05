@@ -1,0 +1,5 @@
+Flask==3.1.2
+gunicorn==21.2.0
+synochat==1.0.4
+PyJWT==2.10.1
+python-dotenv==1.1.1

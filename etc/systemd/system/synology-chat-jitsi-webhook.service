@@ -1,0 +1,18 @@
+[Unit]
+Description=Jitsi-Synology Webhook Service
+After=network.target
+
+[Service]
+User=jitsi
+Group=jitsi
+WorkingDirectory=/home/jitsi/jitsi-synology-chat
+Environment="SYNO_SLASH_TOKEN=YOUR_TOKEN_GENERATED_BY_SYNOLOGY"
+Environment="JITSI_DOMAIN=lsnchat.lifesitenews.com"
+ExecStart=/home/jitsi/jitsi-synology-chat/venv/bin/gunicorn -b 127.0.0.1:5001 app:app
+Restart=on-failure
+
+# Environment variables file
+EnvironmentFile=/home/jitsi/jitsi-synology-chat/.env
+
+[Install]
+WantedBy=multi-user.target

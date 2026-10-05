@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+    <head>
+        <script src="https://lsnchat.lifesitenews.com/external_api.js"></script>
+    </head>
+    <body>
+        <div id="jitsi-container" style="height:700px;"></div>
+        <script>
+        const room = "{{ROOM_NAME}}";
+        const pwd  = "{{PASSWORD}}"; // if no password, leave empty
+        const domain = "lsnchat.lifesitenews.com";
+        const options = { roomName: room, parentNode: document.querySelector('#jitsi-container') };
+        const api = new JitsiMeetExternalAPI(domain, options);
+
+        api.addEventListener('videoConferenceJoined', () => {
+            if (pwd) {
+            api.executeCommand('password', pwd);
+            }
+        });
+        </script>
+    </body>
+</html>
